@@ -57,18 +57,22 @@
   },
   "devDependencies": {
     "@electron/rebuild": "^4.0.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
-    "@vitejs/plugin-react": "^6.0.1",
+    "@vitejs/plugin-react": "^6.0.2",
     "electron": "^41.1.1",
     "electron-builder": "^26.8.1",
     "esbuild": "^0.28.0",
+    "jsdom": "^29.1.1",
     "sass": "^1.98.0",
     "sharp": "^0.34.5",
     "typescript": "^6.0.3",
     "vite": "^8.0.10",
     "vite-plugin-electron": "^0.28.8",
-    "vite-plugin-electron-renderer": "^0.14.6"
+    "vite-plugin-electron-renderer": "^0.14.6",
+    "vitest": "^4.1.6"
   },
   "pnpm": {
     "overrides": {
@@ -95,7 +99,6 @@
     "directories": {
       "output": "release"
     },
-
     "win": {
       "target": [
         "nsis"
@@ -120,7 +123,6 @@
         }
       ]
     },
-
     "nsis": {
       "oneClick": false,
       "differentialPackage": false,

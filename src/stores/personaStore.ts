@@ -250,10 +250,16 @@ export const usePersonaStore = create<PersonaStore>()(
       setCurrentPersona: (persona) => set({ currentPersona: persona }),
       
       addPersona: (personaData) => {
+        let slugFromName = personaData.name
+          .replace(/[^\w\s\u4e00-\u9fa5-]/g, '')
+          .replace(/\s+/g, '-')
+          .toLowerCase()
+          .replace(/^-+|-+$/g, '')
+        
         const newPersona: Persona = {
           ...personaData,
           id: `persona-${Date.now()}`,
-          slug: personaData.slug || personaData.name.toLowerCase().replace(/\s+/g, '-'),
+          slug: personaData.slug || slugFromName,
           createdAt: Date.now(),
           updatedAt: Date.now(),
           sources: personaData.sources || [],

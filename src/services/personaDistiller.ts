@@ -130,7 +130,10 @@ export class PersonaDistiller {
     // 创建基础 Persona
     const persona: Persona = {
       id: `persona-${timestamp}`,
-      slug: this.targetPerson.toLowerCase().replace(/\s+/g, '-'),
+      slug: this.targetPerson
+        .replace(/[^\w\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .toLowerCase(),
       name: this.targetPerson,
       role: this.role,
       description: `从 ${rawData.sources.map(s => s.name).join(', ')} 蒸馏生成`,
