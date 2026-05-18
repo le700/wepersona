@@ -1,6 +1,6 @@
 {
   "name": "wepersona",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "WePersona - 微信聊天助手，整合数字人格与AI聊天功能",
   "main": "dist-electron/main.js",
   "author": {
