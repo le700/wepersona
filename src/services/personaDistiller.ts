@@ -131,7 +131,8 @@ export class PersonaDistiller {
     const persona: Persona = {
       id: `persona-${timestamp}`,
       slug: this.targetPerson
-        .replace(/[^\w\s-]/g, '')
+        .trim()
+        .replace(/[^\w\u4e00-\u9fa5\u3040-\u30ff\u31f0-\u31ff\uac00-\ud7af\s-]/g, '')
         .replace(/\s+/g, '-')
         .toLowerCase(),
       name: this.targetPerson,
