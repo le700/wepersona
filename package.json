@@ -147,7 +147,7 @@
     "extraResources": [
       {
         "from": "resources/",
-        "to": "resources/"
+        "to": "./"
       },
       {
         "from": "public/icon.ico",
