@@ -756,7 +756,19 @@ function WelcomePage({ standalone = false }: WelcomePageProps) {
       await configService.setDecryptKey(decryptKey)
       await configService.setMyWxid(wxid)
       await configService.setCachePath(cachePath)
-      const parsedXorKey = imageXorKey ? parseInt(imageXorKey.replace(/^0x/i, ''), 16) : null
+      
+      let parsedXorKey: number | null = null
+      if (imageXorKey && imageXorKey.trim()) {
+        try {
+          const cleanedKey = imageXorKey.replace(/^0x/i, '')
+          parsedXorKey = parseInt(cleanedKey, 16)
+          if (isNaN(parsedXorKey)) {
+            parsedXorKey = null
+          }
+        } catch {
+          parsedXorKey = null
+        }
+      }
       await configService.setImageXorKey(typeof parsedXorKey === 'number' && !Number.isNaN(parsedXorKey) ? parsedXorKey : 0)
       await configService.setImageAesKey(imageAesKey || '')
       await configService.setWxidConfig(wxid, {
